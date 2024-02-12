@@ -1,0 +1,35 @@
+.delete-city-container {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(212, 195, 195);
+  }
+  
+  /* Input style */
+  .delete-city-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Button style */
+  .delete-city-button {
+    background-color: #f44336; /* Red background color */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .delete-city-button:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+  }

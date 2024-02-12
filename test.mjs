@@ -2,6 +2,8 @@ import pg from 'pg';
 import prompt from 'prompt';
 import dotenv from 'dotenv';
 
+import { add_city, update_city, delete_city, display_cities } from './db.mjs';
+
 //Load environment variables from .env file
 
 dotenv.config();
@@ -46,45 +48,3 @@ while (!shouldExit) {
 }
 await client.end();
 await pool.end();
-
-async function add_city(client, city_name) {
-    try {
-        const res = await client.query(`insert into cities(name) values($1) returning *`, [city_name]);
-        console.log("Completed. Added row:", res.rows);
-    } catch (err) {
-    // catch errors
-        console.log(err);
-    }
-}
-
-async function delete_city(client, cityId) {
-    try{
-        const res = await client.query(`delete from cities where id = $1 returning *` , [cityId]);
-        console.log("Completed. Deleted row:", res.rows);
-    } catch(err){
-        console.log(err);
-    }
-}
-
-async function update_city(client, id, city_name) {
-    try {
-        const res = await client.query(`update cities set name = $2 where id = $1 returning *`, [id, city_name]);
-        console.log("Completed. Updated row:", res.rows);
-    } catch (err) {
-    // catch errors
-        console.log(err);
-    }   
-}
-
-async function display_cities(client) {
-    try {
-        const res = await client.query(`select * from cities`);
-        // display results
-        res.rows.forEach(r => {
-            console.log(r);
-        });
-    } catch (err) {
-    // catch errors
-        console.log(err);
-    }   
-}
